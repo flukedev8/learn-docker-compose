@@ -4,7 +4,7 @@ services:
         image: nginx:1.17.9-alpine
         container_name: nginx
         ports: 
-            - "8080:80"
+            - "80:80"
         volumes: 
             - ./nginx/:/etc/nginx/conf.d/
             - ./www/payment/:/usr/share/nginx/html
