@@ -25,7 +25,6 @@ services:
             - ./mysql/data/:/var/lib/mysql 
         networks: 
             - default
-        restart: always
     phpmyadmin:
         container_name: phpmyadmin
         image: phpmyadmin/phpmyadmin
