@@ -15,16 +15,13 @@ services:
         container_name: mysql
         ports: 
             - "3306:3306"
+        restart: always
         environment: 
-            MYSQL_DATABASE: db
             MYSQL_USER: user
             MYSQL_PASSWORD: isylzjkoot0t
             MYSQL_ROOT_PASSWORD: isylzjkoot0t
         volumes: 
-            - ./dump:/docker-entrypoint-initdb.d
             - ./mysql/data/:/var/lib/mysql 
-        networks: 
-            - default
     phpmyadmin:
         container_name: phpmyadmin
         image: phpmyadmin/phpmyadmin
@@ -32,8 +29,8 @@ services:
             - db:db
         ports: 
             - "8080:80"
+        restart: always
         environment: 
             MYSQL_USER: user
             MYSQL_PASSWORD: isylzjkoot0t
             MYSQL_ROOT_PASSWORD: isylzjkoot0t
-        restart: always
