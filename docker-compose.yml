@@ -36,5 +36,3 @@ services:
             MYSQL_USER: user
             MYSQL_PASSWORD: isylzjkoot0t
             MYSQL_ROOT_PASSWORD: isylzjkoot0t
-volumes: 
-    ./mysql/data:
