@@ -5,3 +5,6 @@ services:
         container_name: nginx
         ports: 
             - "8080:80"
+        volumes: 
+            - ./nginx/:/etc/nginx/conf.d/
+            - ./www/payment/:/usr/share/nginx/html
