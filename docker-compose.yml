@@ -8,3 +8,32 @@ services:
         volumes: 
             - ./nginx/:/etc/nginx/conf.d/
             - ./www/payment/:/usr/share/nginx/html
+        restart: always
+    db:
+        image: mysql
+        container_name: mysql
+        ports: 
+            - "3306:3306"
+        environment: 
+            MYSQL_DATABASE: db
+            MYSQL_USER: user
+            MYSQL_PASSWORD: isylzjkoot0t
+            MYSQL_ROOT_PASSWORD: isylzjkoot0t
+        volumes: 
+            - ./dump:/docker-entrypoint-initdb.d
+            - ./mysql/data/:/var/lib/mysql 
+        networks: 
+            - default
+        restart: always
+    phpmyadmin:
+        container_name: phpmyadmin
+        image: phpmyadmin/phpmyadmin
+        links:
+            - db:db
+        ports: 
+            - "8080:80"
+        environment: 
+            MYSQL_USER: user
+            MYSQL_PASSWORD: isylzjkoot0t
+            MYSQL_ROOT_PASSWORD: isylzjkoot0t
+        restart: always
