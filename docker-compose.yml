@@ -36,3 +36,17 @@ services:
             MYSQL_USER: user
             MYSQL_PASSWORD: isylzjkoot0t
             MYSQL_ROOT_PASSWORD: isylzjkoot0t
+    nodejs:
+        image: node:13.10.1-alpine3.10
+        container_name: nodejs 
+        environment: 
+            NODE_ENV: production
+        working_dir: /home/app/serversiderender
+        restart: always
+        volumes:
+            - ./node/serversiderender:/home/app/serversiderender
+        expose:
+            - 8083
+        ports:
+            - "8083:8083"
+        command: "npm run dev"
