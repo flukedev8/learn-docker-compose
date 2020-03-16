@@ -44,7 +44,7 @@ services:
         working_dir: /home/app/serversiderender
         restart: always
         volumes:
-            - ./node/serversiderender:/home/app/serversiderender
+            - ./nodejs/:/home/app/serversiderender
         expose:
             - 8083
         ports:
