@@ -6,6 +6,9 @@ services:
         ports: 
             - "80:80"
             - "443:443"
+        expose: 
+            - '80'
+            - '443'
         volumes: 
             - ./nginx/:/etc/nginx/conf.d/
             - ./www/payment/:/usr/share/nginx/html
