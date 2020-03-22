@@ -17,21 +17,18 @@ services:
         image: mysql
         container_name: mysql
         ports: 
-            - '3306:3306'
-        expose:
-            - '3306'
+            - 3306:3306
         restart: always
         environment: 
-            MYSQL_USER: 'user'
-            MYSQL_PASSWORD: 'isylzjkoot0t'
             MYSQL_ROOT_PASSWORD: 'isylzjkoot0t'
+            MYSQL_DATABASE: "kmids_payment"
         volumes: 
             - ./mysql/data/:/var/lib/mysql 
     phpmyadmin:
         container_name: phpmyadmin
         image: phpmyadmin/phpmyadmin
         links:
-            - db:db
+            - db
         ports: 
             - "8080:80"
         restart: always
@@ -41,13 +38,16 @@ services:
             MYSQL_ROOT_PASSWORD: isylzjkoot0t
     nodejs:
         image: node:13.10.1-alpine3.10
+        user: "node"
         container_name: nodejs 
+        links:
+            - db
         environment: 
             NODE_ENV: production
-        working_dir: /home/app/serversiderender
+        working_dir: /home/node/app
         restart: always
         volumes:
-            - ./nodejs/:/home/app/serversiderender
+            - ./nodejs/:/home/node/app
         expose:
             - 8083
         ports:
