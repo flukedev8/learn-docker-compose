@@ -20,8 +20,8 @@ services:
             - 3306:3306
         restart: always
         environment: 
-            MYSQL_ROOT_PASSWORD: 'isylzjkoot0t'
-            MYSQL_DATABASE: "kmids_payment"
+            MYSQL_ROOT_PASSWORD: 'p@sswordhere'
+            MYSQL_DATABASE: "db"
         volumes: 
             - ./mysql/data/:/var/lib/mysql 
     phpmyadmin:
@@ -34,8 +34,8 @@ services:
         restart: always
         environment: 
             MYSQL_USER: user
-            MYSQL_PASSWORD: isylzjkoot0t
-            MYSQL_ROOT_PASSWORD: isylzjkoot0t
+            MYSQL_PASSWORD: p@sswordhere
+            MYSQL_ROOT_PASSWORD: p@sswordhere
     nodejs:
         image: node:13.10.1-alpine3.10
         user: "node"
